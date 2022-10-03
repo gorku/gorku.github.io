@@ -1,7 +1,7 @@
-import React from "react";
-import logo from "../static/svg/logo.svg";
-import "../static/css/App.css";
-import { Link } from "react-router-dom";
+import React from "react"
+import logo from "../static/svg/logo.svg"
+import "../static/css/App.css"
+import { Link } from "react-router-dom"
 
 function Home() {
   return (
@@ -24,7 +24,7 @@ function Home() {
         </Link>
       </header>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
