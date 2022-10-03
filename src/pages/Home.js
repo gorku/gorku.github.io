@@ -1,7 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "../static/svg/logo.svg";
+import "../static/css/App.css";
+import { Link } from "react-router-dom";
 
-function App() {
+function Home() {
   return (
     <div className="App">
       <header className="App-header">
@@ -17,9 +19,12 @@ function App() {
         >
           Learn React
         </a>
+        <Link to="/about" className="App-link">
+          About Page
+        </Link>
       </header>
     </div>
   );
 }
 
-export default App;
+export default Home;
