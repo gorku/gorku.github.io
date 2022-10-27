@@ -5,12 +5,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  flex: content;
+  justify-content: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* :root {
+  background-color: aqua;
+  width: 340px;
+  height: 640px;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+} */
+
+#fullBody {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/src/static/images/iconGorku.svg');
+  background-size: 5%;
+  
+}
+
+#content {
+  background-color: #ffffff;
+  
+  max-width: 360px;
+  max-height: 640px;
+  width: 100%;
+  height: 100%;
+  /* justify-content: center; */
+  /* position: absolute;
+  top: 50%;
+  left: 50%; */
+  font-size: 12px;
+}
+
+
 
 @tailwind base;
 @tailwind components;
