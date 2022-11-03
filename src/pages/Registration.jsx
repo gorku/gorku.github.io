@@ -4,10 +4,10 @@ import iconGorku from "../static/images/iconGorku.svg"
 const Registration = () => {
   return (
     <div className="relative flex justify-center h-full">
-      <div className="flex flex-col w-5/6 overflow-y-scroll no-scrollbar">
+      <div className="flex flex-col w-full px-6 overflow-y-scroll no-scrollbar">
         {/* logo section */}
         <div className="flex justify-center pt-12">
-          <img src={iconGorku} alt="" width={188}  height={104}/>
+          <img src={iconGorku} alt="" width={188} height={104} />
         </div>
 
         {/* login section */}
@@ -57,6 +57,17 @@ const Registration = () => {
                 className="w-full border-[1px] border-gray-primary rounded-lg px-2 "
                 placeholder="8123456789"
               />
+            </div>
+            <p>Mendaftar sebagai</p>
+            <div className="flex space-x-2 h-11">
+              {/* <input
+                
+                placeholder="8123456789"
+              /> */}
+              <select name="" id="" className="w-full border-[1px] border-gray-primary rounded-lg px-2 ">
+                <option value="mercedes">Pemesan Lapangan</option>
+                <option value="audi">Pemilik Lapangan</option>
+              </select>
             </div>
           </div>
         </div>
