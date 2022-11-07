@@ -49,10 +49,7 @@ const TambahLapangan = () => {
               backgroundPosition: "center",
             }}
           >
-            <label for="inputTag" className="hide_file bg-blue-200">
-                <br />
-                <br />
-                a
+            <label for="inputTag" className="hide_file bg-blue-200" >
               <input
                 id="inputTag"
                 type="file"
@@ -69,8 +66,8 @@ const TambahLapangan = () => {
             </label>
           </div>
           <p>
-            <span id="imageName" className="text-red-800">
-              lorem
+            <span id="imageName" className="text-blue-primary">
+              
             </span>
           </p>
 
@@ -98,7 +95,7 @@ const TambahLapangan = () => {
               className="w-full border-[1px] border-gray-primary rounded-lg px-2 "
               placeholder="Lapangan ..."
               required
-              {...register("fullName")}
+              {...register("namaLapangan")}
             />
           </div>
 
@@ -108,7 +105,7 @@ const TambahLapangan = () => {
               className="w-full border-[1px] border-gray-primary rounded-lg px-2 "
               placeholder="Jalan ..."
               required
-              {...register("fullName")}
+              {...register("alamat")}
             />
           </div>
 
@@ -118,7 +115,7 @@ const TambahLapangan = () => {
               className="w-full border-[1px] border-gray-primary rounded-lg px-2 "
               placeholder="75.000"
               required
-              {...register("fullName")}
+              {...register("hargaSewa")}
             />
           </div>
 
@@ -133,7 +130,7 @@ const TambahLapangan = () => {
         {/* footer */}
         <div class="sticky bg-white inset-x-0 bottom-0 flex justify-between space-x-4 p-3 shadow-[0_0_10px_1px_rgba(0,0,0,0.1)]">
           <button className="w-full h-10 bg-blue-primary rounded-lg text-white font-semibold">
-            Ubah Detail Lapangan
+            Tambah Lapangan
           </button>
         </div>
       </div>
