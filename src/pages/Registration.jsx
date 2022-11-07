@@ -25,14 +25,14 @@ const Registration = () => {
     >
       <div className="flex flex-col overflow-y-scroll no-scrollbar w-full">
         {/* logo section */}
-        <div className="flex justify-center pt-12">
+        <div className="flex justify-center pt-6">
           <img src={iconGorku} alt="" width={188} height={104} />
         </div>
 
-        {/* form section */}
-        <div className="flex items-center pt-6 pb-16 mx-8">
+        {/* login section */}
+        <div className="flex items-center pt-4 pb-16">
           <div className="flex flex-col w-full space-y-1">
-            <div className="flex justify-center pb-4">
+            <div className="flex justify-center pb-2">
               <h2 className="text-blue-primary text-xl font-semibold py-3">
                 Informasi Pengguna
               </h2>
@@ -49,16 +49,13 @@ const Registration = () => {
                 {...register("phoneNumber")}
               />
             </div>
-
-            <div className="pt-2" />
-            <div className="h-[1px] w-full bg-[#D9D9D9]" />
-            <div className="pb-2" />
-
+            <br />
+            <hr className="w-full" />
             <p>Nama Lengkap</p>
             <div className="flex space-x-2 h-11">
               <input
                 className="w-full border-[1px] border-gray-primary rounded-lg px-2 "
-                placeholder="John Doe"
+                placeholder="Isi nama lengkap anda.."
                 required
                 {...register("fullName")}
               />
@@ -82,39 +79,13 @@ const Registration = () => {
             <div className="flex space-x-2 h-11">
               <input
                 className="w-full border-[1px] border-gray-primary rounded-lg px-2 "
-                placeholder="john@email.com"
-                required
-                type={"email"}
+                placeholder="Isi email anda.."
                 {...register("email")}
-              />
-            </div>
-            <p className="pt-3">Kata Sandi</p>
-            <div className="flex space-x-2 h-11">
-              <input
-                className="w-full border-[1px] border-gray-primary rounded-lg px-2 "
-                placeholder="Password"
-                type={"password"}
-                required
-                {...register("password")}
-              />
-            </div>
-            <p className="pt-3">Ulangi Kata Sandi</p>
-            <div className="flex space-x-2 h-11">
-              <input
-                className="w-full border-[1px] border-gray-primary rounded-lg px-2 "
-                placeholder="Password"
-                type={"password"}
-                required
-                {...register("retypePassword")}
               />
             </div>
             <p>Mendaftar sebagai</p>
             <div className="flex space-x-2 h-11">
-              {/* <input
-                
-                placeholder="8123456789"
-              /> */}
-              <select name="" id="" className="w-full border-[1px] border-gray-primary rounded-lg px-2 ">
+              <select className="w-full border-[1px] border-gray-primary rounded-lg px-2 ">
                 <option value="mercedes">Pemesan Lapangan</option>
                 <option value="audi">Pemilik Lapangan</option>
               </select>

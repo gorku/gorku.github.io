@@ -72,6 +72,24 @@ select {
   border-right: 16px solid transparent
 }
 
+.hide_file {
+  position: absolute;
+  z-index: 1000;
+  opacity: 0;
+  cursor: pointer;
+  right: 0;
+  top: 80px;
+  padding-left: 18px;
+  padding-right: 18px;
+  height: 9rem;
+  font-size: 24px;
+  width: 100%;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  content: 'Select some files';
+
+}
 
 @tailwind base;
 @tailwind components;

@@ -2,10 +2,11 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import back from "../static/svg/back.svg"
 import location from "../static/svg/location.svg"
+import harga from "../static/svg/harga.png"
 import copy from "../static/svg/copy.svg"
 import chat from "../static/svg/chat.svg"
 import gor from "../static/images/gor.png"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 
 const DetailLapangan = () => {
   const [waktuPesan, setWaktuPesan] = useState([
@@ -13,7 +14,7 @@ const DetailLapangan = () => {
       id: 0,
       waktu: "08:00",
       status: "false",
-      isBooked: "false",
+      isBooked: "true",
     },
     {
       id: 1,
@@ -25,7 +26,7 @@ const DetailLapangan = () => {
       id: 2,
       waktu: "10:00",
       status: "false",
-      isBooked: "false",
+      isBooked: "true",
     },
     {
       id: 3,
@@ -79,7 +80,7 @@ const DetailLapangan = () => {
       id: 11,
       waktu: "19:00",
       status: "false",
-      isBooked: "false",
+      isBooked: "true",
     },
     {
       id: 12,
@@ -107,7 +108,6 @@ const DetailLapangan = () => {
     setActive(props)
   }
 
-  let i = 0
   const handleJam = props => {
     const waktuPesanTemp = waktuPesan.map((val, index) => {
       if (val.id === props) {
@@ -123,7 +123,6 @@ const DetailLapangan = () => {
     })
 
     setWaktuPesan(waktuPesanTemp)
-    // setWaktuPesan(waktuPesan)
   }
 
   return (
@@ -131,7 +130,7 @@ const DetailLapangan = () => {
       <div className="flex flex-col h-full overflow-y-scroll no-scrollbar relative">
         {/* header */}
         <div className="flex flex-row justify-between space-x-4 px-4 h-12 bg-white sticky top-0 items-center">
-          <Link to="/">
+          <Link to="/cari-lapangan">
             <img src={back} alt="" className="h-6" />
           </Link>
           <div className="text-sm font-semibold text-left w-full">
@@ -143,9 +142,7 @@ const DetailLapangan = () => {
             </button>
             <button
               onClick={() => {
-                navigator.clipboard
-                  .writeText(document.location.href)
-                  .then(notify("as"))
+                navigator.clipboard.writeText(document.location.href).then(notify("as"))
               }}
             >
               <img src={copy} alt="" className="h-8" />
@@ -174,18 +171,18 @@ const DetailLapangan = () => {
             </div>
 
             <div className="flex space-x-2">
-              <img src={location} alt="" className="" />
+              <img src={harga} alt="" className="w-[20px]" />
 
               <div className="text-justify leading-tight my-auto">
-                Harga sewa Rp 60.000,00/jam
+                Harga sewa <span className="font-bold">Rp 60.000,00/jam</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col space-y-4 max-h-screen  w-full pt-6 pb-[72px]">
+        <div className="flex flex-col space-y-4 max-h-screen  w-full pt-6 pb-[36px]">
           {/* Jadwal */}
-          <div className="flex flex-row w-screen overflow-x-scroll space-x-4 px-6 no-scrollbar">
+          <div className="flex flex-row w-screen overflow-x-scroll space-x-2 px-6 no-scrollbar">
             <button
               id={1}
               onClick={() => {
@@ -296,9 +293,13 @@ const DetailLapangan = () => {
                       onClick={() => {
                         handleJam(val?.id)
                       }}
+                      disabled={val?.isBooked === "true" ? true : false}
                       className={
                         val?.status === "true"
                           ? "border-[1px] px-4 h-[44px] rounded-lg bg-blue-primary text-white font-medium"
+                          : "border-[1px] px-4 h-[44px] rounded-lg text-blue-primary font-medium" &&
+                            val?.isBooked === "true"
+                          ? "border-[1px] px-4 h-[44px] rounded-lg bg-[#E2E2E2] text-[#C4C4C4] font-medium disabled"
                           : "border-[1px] px-4 h-[44px] rounded-lg text-blue-primary font-medium"
                       }
                     >
