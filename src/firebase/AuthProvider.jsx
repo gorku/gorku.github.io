@@ -16,7 +16,7 @@ const setToken = token => {
 
   let options = {
     path: "/",
-    expires: new Date(Date.now()+432000)
+    expires: new Date(Date.now()+86400000)
   }
 
   if (!isDevelopment) {
@@ -55,13 +55,13 @@ const AuthProvider = ({ children }) => {
     })
   }, [])
 
-  // force refresh the token every 5 Days
+  // force refresh the token every 1 Days
   useEffect(() => {
     const handle = setInterval(async () => {
       console.info(`Refreshing JWT Token`)
       const userRefresh = auth.currentUser
       if (userRefresh) await userRefresh.getIdTokenResult(true)
-    }, 5 * 24 * 60 * 60 * 1000)
+    }, 1 * 24 * 60 * 60 * 1000)
     return () => clearInterval(handle)
   }, [])
 
