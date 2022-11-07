@@ -4,6 +4,8 @@ import { cookies } from "../helpers/cookies"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 
+import { ReactComponent as MyLogo } from "../static/svg/card.svg";
+
 function Home() {
   const navigate = useNavigate()
 
@@ -17,6 +19,7 @@ function Home() {
 
   return (
     <div className="App">
+      <MyLogo />
     </div>
   )
 }
