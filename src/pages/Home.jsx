@@ -12,7 +12,7 @@ import { Link } from "react-router-dom"
 import sportfamilyamico from "../static/svg/sport-family-amico.svg"
 import BadmintonAmico from "../static/svg/Badminton-amico.svg"
 
-import { ReactComponent as MyLogo } from "../static/svg/card.svg";
+import { ReactComponent as MyLogo } from "../static/svg/card.svg"
 
 function Home() {
   const navigate = useNavigate()
@@ -79,12 +79,15 @@ function Home() {
           {" "}
           <div className="h-full flex flex-col overflow-y-hidden relative px-6">
             {/* header */}
-            <div className="bg-white top-0 pt-4">
+            {/* <div className="bg-white top-0 pt-4">
               <img src={gorkusimple} alt="" />
+            </div> */}
+            <div className="flex bg-white justify-center top-0 pt-4">
+              <img src={GorKu} alt="" />
             </div>
 
             {/* konten */}
-            <div className="flex flex-col flex-grow max-h-screen absolute inset-0 justify-center items-center space-y-4 z-10">
+            <div className="flex flex-col flex-grow max-h-screen absolute inset-x-0 bottom-[50px] justify-center items-center space-y-4 z-10">
               <div className="w-5/6 text-center font-black text-[16px]">
                 Halo,{" "}
                 <span className="text-blue-primary"> Andre Silalahi! </span>
@@ -107,7 +110,10 @@ function Home() {
                   <img src={down} alt="" className="animate-bounce h-8 w-8" />
                 </div>
 
-                <Link to="/tambah-lapangan" className="font-black text-white bg-blue-primary px-6 py-3 text-base rounded-md">
+                <Link
+                  to="/tambah-lapangan"
+                  className="font-black text-white bg-blue-primary px-6 py-3 text-base rounded-md"
+                >
                   Tambahkan Lapangan Baru
                 </Link>
               </div>

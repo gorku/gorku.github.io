@@ -8,7 +8,6 @@ const TambahLapangan = () => {
   const { register, handleSubmit } = useForm()
 
   const handleFile = props => {
-    let input = document.getElementById("inputTag")
     let imageName = document.getElementById("imageName")
 
     imageName.innerText = props.name
@@ -31,17 +30,6 @@ const TambahLapangan = () => {
         {/* konten */}
         <div className="flex flex-col flex-grow max-h-screen w-full pt-2 pb-6 px-4 space-y-1.5">
           <p>Gambar Lapangan</p>
-          {/* <div
-            className="border-2 border-blue-primary rounded-md h-36 w-full bg-no-repeat border-dashed text-red-200"
-            style={{
-              backgroundImage: `url(${cameraplus})`,
-              backgroundPosition: "center",
-              float: "left",
-              cursor: "pointer",
-            }}
-          >
-            <input id="hide_file" type="file" className="text-6xl absolute inset-x-0" />
-          </div> */}
           <div
             className="border-2 border-blue-primary rounded-md h-36 w-full bg-no-repeat border-dashed text-red-200 text-center"
             style={{
@@ -49,7 +37,7 @@ const TambahLapangan = () => {
               backgroundPosition: "center",
             }}
           >
-            <label for="inputTag" className="hide_file bg-blue-200" >
+            <label for="inputTag" className="hide_file bg-blue-200">
               <input
                 id="inputTag"
                 type="file"
@@ -62,13 +50,10 @@ const TambahLapangan = () => {
                   )
                 }}
               />
-
             </label>
           </div>
           <p>
-            <span id="imageName" className="text-blue-primary">
-              
-            </span>
+            <span id="imageName" className="text-blue-primary"></span>
           </p>
 
           <p>Jenis Lapangan</p>
