@@ -108,6 +108,17 @@ const Registration = () => {
                 {...register("retypePassword")}
               />
             </div>
+            <p>Mendaftar sebagai</p>
+            <div className="flex space-x-2 h-11">
+              {/* <input
+                
+                placeholder="8123456789"
+              /> */}
+              <select name="" id="" className="w-full border-[1px] border-gray-primary rounded-lg px-2 ">
+                <option value="mercedes">Pemesan Lapangan</option>
+                <option value="audi">Pemilik Lapangan</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
