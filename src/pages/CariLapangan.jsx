@@ -30,7 +30,28 @@ const CariLapagan = () => {
       location: "0.7",
     },
     {
-        id: 3,
+        id: 4,
+        namaLapangan: "Gor Kukusan",
+        jenisLapangan: "Lapangan Bulutangkis",
+        harga: "45.000",
+        location: "0.7",
+      },
+      {
+        id: 5,
+        namaLapangan: "Gor Kukusan",
+        jenisLapangan: "Lapangan Bulutangkis",
+        harga: "45.000",
+        location: "0.7",
+      },
+      {
+        id: 6,
+        namaLapangan: "Gor Kukusan",
+        jenisLapangan: "Lapangan Bulutangkis",
+        harga: "45.000",
+        location: "0.7",
+      },
+      {
+        id: 7,
         namaLapangan: "Gor Kukusan",
         jenisLapangan: "Lapangan Bulutangkis",
         harga: "45.000",
@@ -42,7 +63,7 @@ const CariLapagan = () => {
     <>
       <div className="flex flex-col h-full overflow-y-scroll no-scrollbar relative">
         {/* header */}
-        <div className="flex flex-row justify-between space-x-4 px-4 h-12 bg-white sticky top-0 items-center">
+        <div className="flex flex-row justify-between space-x-4 px-4 h-12 bg-white sticky top-0 items-center z-10">
           <Link to="/">
             <img src={back} alt="" className="h-6" />
           </Link>
@@ -64,18 +85,19 @@ const CariLapagan = () => {
               </div>
             </div>
           </div>
-
-          <div className="flex flex-row space-x-2 px-3 shadow box-border focus:outline-none bg-white rounded-lg h-10 text-sm border-[1px] border-[#E2E2E2]">
-            <div className="my-auto "><img src={search} alt="" /></div>
+            {/* search */}
+          <div className="flex flex-row space-x-2 px-2 py-2 shadow box-border focus:outline-none bg-white rounded-lg h-12 text-sm border-[1px] border-[#E2E2E2]">
+            <img src={search} alt="" className="p-1" />
             <input
-              className="ml-2 text-xs w-full rounded-lg"
+              className="ml-2 text-xs w-full h-full rounded-lg"
               placeholder="Cari lapangan bulutangkis.."
               style={{
                 outline: "none",
               }}
             />
           </div>
-          <div>
+
+          <div className="z-0">
             {daftarLapangan?.map(val => {
               return (
                 <>
@@ -102,11 +124,6 @@ const CariLapagan = () => {
             })}
           </div>
         </div>
-
-        {/* footer */}
-        {/* <div className="bg-red-400">
-            lorem
-        </div> */}
       </div>
     </>
   )
