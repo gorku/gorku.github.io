@@ -5,6 +5,7 @@ import LoginOTP from "../pages/LoginOTP";
 import About from "../pages/About";
 import Registration from "../pages/Registration";
 import DetailLapangan from "../pages/DetailLapangan";
+import CariLapagan from "../pages/CariLapangan";
 
 
 const router = createHashRouter([
@@ -27,6 +28,10 @@ const router = createHashRouter([
   {
     path: "/registration",
     element: <Registration />,
+  },
+  {
+    path: "/cari-lapangan",
+    element: <CariLapagan />,
   },
   {
     path: "/detail-lapangan",
