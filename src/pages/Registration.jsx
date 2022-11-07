@@ -23,9 +23,9 @@ const Registration = () => {
       className="relative flex justify-center h-full"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col overflow-y-scroll no-scrollbar w-full">
+      <div className="flex flex-col overflow-y-scroll no-scrollbar w-full px-4">
         {/* logo section */}
-        <div className="flex justify-center pt-6">
+        <div className="flex justify-center pt-2">
           <img src={iconGorku} alt="" width={188} height={104} />
         </div>
 
