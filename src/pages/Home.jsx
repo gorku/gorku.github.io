@@ -12,6 +12,8 @@ import { Link } from "react-router-dom"
 import sportfamilyamico from "../static/svg/sport-family-amico.svg"
 import BadmintonAmico from "../static/svg/Badminton-amico.svg"
 
+import { ReactComponent as MyLogo } from "../static/svg/card.svg";
+
 function Home() {
   const navigate = useNavigate()
   const role = "pengguna"
