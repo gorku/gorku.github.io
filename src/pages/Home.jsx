@@ -13,10 +13,20 @@ import sportfamilyamico from "../static/svg/sport-family-amico.svg"
 import BadmintonAmico from "../static/svg/Badminton-amico.svg"
 
 import { ReactComponent as MyLogo } from "../static/svg/card.svg"
+import api from "../helpers/api"
 
 function Home() {
   const navigate = useNavigate()
   const role = "pengguna"
+
+  // useEffect(() => {
+  //   async function getData() {
+  //     const data = await api.get('/history')
+  //     console.log(data)
+  //   }
+
+  //   getData()
+  // }, [])
 
   // useEffect(() => {
   //   const isAuth = cookies.get("token")
