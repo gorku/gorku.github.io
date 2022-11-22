@@ -130,11 +130,11 @@ const TambahLapangan = () => {
                 style={{
                   display: "none",
                 }}
-                onChange={() => {
-                  handleFile(
-                    document.querySelector("input[type=file]").files[0]
-                  )
-                }}
+                // onChange={() => {
+                //   handleFile(
+                //     document.querySelector("input[type=file]").files[0]
+                //   )
+                // }}
               />
             </label>
           </div>

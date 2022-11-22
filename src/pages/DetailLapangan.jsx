@@ -125,6 +125,8 @@ const DetailLapangan = () => {
     setWaktuPesan(waktuPesanTemp)
   }
 
+  const no = "6281233110190"
+
   return (
     <>
       <div className="flex flex-col h-full overflow-y-scroll no-scrollbar relative">
@@ -137,9 +139,9 @@ const DetailLapangan = () => {
             Detail Lapangan
           </div>
           <div className="flex space-x-2.5">
-            <button>
+            <a href={`https://api.whatsapp.com/send?phone=${no}&text=Mau%2C%20Pesan!`} target="_blank">
               <img src={chat} alt="" className="h-16" />
-            </button>
+            </a>
             <button
               onClick={() => {
                 navigator.clipboard.writeText(document.location.href).then(notify("as"))
