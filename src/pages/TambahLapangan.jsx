@@ -13,6 +13,7 @@ import {
 } from "../constants/cloudStorage"
 import { getGmapsPlaceUrl } from "../helpers/gmaps"
 import api from "../helpers/api"
+import { cookies } from "../helpers/cookies"
 
 const TambahLapangan = () => {
   const { register, handleSubmit } = useForm()
@@ -24,7 +25,11 @@ const TambahLapangan = () => {
     data.lat = lat.toString()
     data.long = lng.toString()
     data.rent_fee = parseInt(data.rent_fee)
-    const response = await api.post("/register/gor", data)
+    const response = await api.post("/register/gor", data, {
+      headers: {
+        Authorization: "Bearer " + cookies.get("token"),
+      },
+    })
     
     if (response.data.status === true) {
       navigate("/")

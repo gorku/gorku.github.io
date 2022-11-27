@@ -2,20 +2,33 @@ import { useForm } from "react-hook-form"
 import { useAuth } from "../firebase/AuthProvider"
 import iconGorku from "../static/images/iconGorku.svg"
 import toast from "react-hot-toast"
+import api from "../helpers/api"
+import { useNavigate } from "react-router-dom"
+import { cookies } from "../helpers/cookies"
 
 const Registration = () => {
   const { user } = useAuth()
+  const navigate = useNavigate()
   const phoneNumber = user?.phoneNumber.slice(3)
 
   const { register, handleSubmit } = useForm()
 
-  const onSubmit = data => {
-    if (data?.password !== data?.retypePassword) {
-      toast.error("Ulangi Password Tidak Sama")
+  const onSubmit = async data => {
+    try {
+      const response = await api.post("/register/user", data, {
+        headers: {
+          Authorization: "Bearer " + cookies.get("token"),
+        },
+      })
 
-      return
+      if (response.data.status) {
+        localStorage.removeItem("need_regis")
+        localStorage.setItem("user_data", JSON.stringify(response.data.data))
+        navigate("/")
+      }
+    } catch (err) {
+      toast.error(err)
     }
-    console.log(data)
   }
 
   return (
@@ -42,12 +55,9 @@ const Registration = () => {
               <div className="flex items-center justify-center w-1/5 border-[1px] border-gray-primary rounded-lg bg-gray-primary">
                 <p className="justify-center ">+62</p>
               </div>
-              <input
-                className="w-4/5 border-[1px] border-gray-primary rounded-lg px-2"
-                value={phoneNumber}
-                disabled
-                {...register("phoneNumber")}
-              />
+              <div className="w-4/5 border-[1px] border-gray-primary rounded-lg px-2 pt-3 bg-gray-primary">
+                {phoneNumber}
+              </div>
             </div>
             <br />
             <hr className="w-full" />
@@ -65,14 +75,14 @@ const Registration = () => {
               <select
                 className="w-full border-[1px] border-gray-primary rounded-lg pl-2"
                 required={true}
-                {...register("customerType")}
+                {...register("type")}
               >
                 <option disabled value="">
                   {" "}
                   Pilih{" "}
                 </option>
-                <option value="pengguna"> Pengguna </option>
-                <option value="penyewa"> Penyewa Lapangan </option>
+                <option value="BUYER"> Pengguna </option>
+                <option value="SELLER"> Penyewa Lapangan </option>
               </select>
             </div>
             <p className="pt-3">Email</p>
@@ -82,13 +92,6 @@ const Registration = () => {
                 placeholder="Isi email anda.."
                 {...register("email")}
               />
-            </div>
-            <p>Mendaftar sebagai</p>
-            <div className="flex space-x-2 h-11">
-              <select className="w-full border-[1px] border-gray-primary rounded-lg px-2 ">
-                <option value="mercedes">Pemesan Lapangan</option>
-                <option value="audi">Pemilik Lapangan</option>
-              </select>
             </div>
           </div>
         </div>

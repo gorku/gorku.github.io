@@ -37,7 +37,7 @@ const router = createHashRouter([
     element: <CariLapangan />,
   },
   {
-    path: "/detail-lapangan",
+    path: "/detail-lapangan/:id",
     element: <DetailLapangan />,
   },
   {
@@ -49,7 +49,7 @@ const router = createHashRouter([
     element: <RiwayatLapangan />,
   },
   {
-    path: "/detail-riwayat",
+    path: "/detail-riwayat/:id",
     element: <DetailRiwayat />,
   },
 ]);

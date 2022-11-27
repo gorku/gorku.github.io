@@ -20,6 +20,7 @@ const Login = () => {
 
   const onSubmit = async data => {
     // data = {phoneNumber: '123456'}
+    data.phoneNumber = '+62' + data.phoneNumber
     toast.loading("Memproses Login Anda")
 
     // this use react-phone-number-input library
@@ -52,10 +53,6 @@ const Login = () => {
   }
 
   const { register, handleSubmit } = useForm()
-  // const onSubmit = data => {
-  //   console.log(data)
-  //   navigate('/loginotp')
-  // }
 
   useEffect(() => {
     window.recaptchaVerifier = new RecaptchaVerifier(

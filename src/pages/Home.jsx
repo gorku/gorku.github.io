@@ -4,45 +4,66 @@ import { cookies } from "../helpers/cookies"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import GorKu from "../static/images/iconGorku.svg"
-import gorkusimple from "../static/svg/gorku-simple.svg"
 import search from "../static/svg/search.svg"
 import history from "../static/svg/history.svg"
 import down from "../static/svg/down.svg"
 import { Link } from "react-router-dom"
 import sportfamilyamico from "../static/svg/sport-family-amico.svg"
 import BadmintonAmico from "../static/svg/Badminton-amico.svg"
-import locationWhite from "../static/svg/locationWhite.svg"
-import harga from "../static/svg/harga.png"
-
-import { ReactComponent as MyLogo } from "../static/svg/card.svg"
 import api from "../helpers/api"
 import { useState } from "react"
+import toast from "react-hot-toast"
 
 function Home() {
   const navigate = useNavigate()
-  const role = "pengguna"
-  const [isLapanganExist, setIsLapanganExist] = useState(false)
+  const userData =
+    localStorage.getItem("user_data") !== null
+      ? JSON.parse(localStorage.getItem("user_data"))
+      : { type: "BUYER" }
+  const role = userData.type
+  const [isLapanganExist, setIsLapanganExist] = useState(null)
+  const [lapanganData, setLapanganData] = useState(null)
 
-  // useEffect(() => {
-  //   async function getData() {
-  //     const data = await api.get('/history')
-  //     console.log(data)
-  //   }
+  const fetchUserGor = async () => {
+    try {
+      const response = await api.get("/gor/user", {
+        headers: {
+          Authorization: "Bearer " + cookies.get("token"),
+        },
+      })
 
-  //   getData()
-  // }, [])
+      if (response.data.status) {
+        setIsLapanganExist(true)
+        setLapanganData(response.data.data)
+      } else {
+        setIsLapanganExist(false)
+      }
+    } catch (err) {
+      toast.error(err)
+    }
+  }
 
-  // useEffect(() => {
-  //   const isAuth = cookies.get("token")
+  useEffect(() => {
+    const isAuth = cookies.get("token")
 
-  //   if (!isAuth) {
-  //     navigate("/login")
-  //   }
-  // })
+    if (!isAuth) {
+      navigate("/login")
+      return
+    }
+
+    // localStorage.setItem("need_regis", "true")
+    if (localStorage.getItem("need_regis") === "true") {
+      navigate("/registration")
+      return
+    }
+
+    fetchUserGor()
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <>
-      {role === "pengguna" ? (
+      {role === "BUYER" ? (
         <>
           <div className="h-full flex flex-col overflow-y-hidden relative">
             {/* header */}
@@ -56,7 +77,7 @@ function Home() {
                 Halo,{" "}
                 <span className="text-blue-primary">
                   {" "}
-                  Hafiz Bhadrika Alamsyah!{" "}
+                  {userData.verified}!{" "}
                 </span>
                 <br />
                 Apa yang ingin kamu lakukan hari ini?
@@ -101,7 +122,7 @@ function Home() {
 
                 {/* konten */}
                 <div className="h-96 m-8 space-y-3">
-                  <h1 className="underline text-blue-primary text-lg font-semibold">
+                  <h1 className="text-center text-blue-primary text-lg font-semibold">
                     Lapangan Saat Ini
                   </h1>
                   <div className="h-full w-full space-y-3 border-2 border-blue-primary bg-blue-primary rounded-xl text-white p-4">
@@ -109,22 +130,20 @@ function Home() {
                       <img src={BadmintonAmico} className="h-36" alt="" />
                     </div>
                     <div className="">
-                      <h1 className="text-base font-semibold">Nama Lapangan</h1>
-                      <p>Lapangan Badminton</p>
+                      <h1 className="text-base font-semibold">{lapanganData?.name}</h1>
+                      <p>Lapangan {lapanganData?.type}</p>
                     </div>
 
                     <div>
                       <h1 className="text-[10px]">
                         {" "}
-                        <span className="font-semibold">Alamat: </span> Jalan
-                        H.Mandor Salim No. 3A 6 1, RT.2, Srengseng, Kembangan,
-                        West Jakarta City, Jakarta 11630
+                        <span className="font-semibold">Alamat: </span> {lapanganData?.address}
                       </h1>
 
                       <h1 className="text-[10px]">
                         {" "}
-                        <span className="font-semibold">Harga sewa: </span> Rp
-                        60.000,00/jam
+                        <span className="font-semibold">Harga sewa: </span> Rp.{" "}
+                        {lapanganData?.rent_fee}/jam
                       </h1>
 
                       <h1 className="text-[10px]">
@@ -135,7 +154,10 @@ function Home() {
                     </div>
 
                     <div className="pt-3">
-                      <Link to="/riwayat-lapangan" className="rounded-lg h-8 flex justify-center items-center bg-blue-secondary font-black text-sm text-blue-primary">
+                      <Link
+                        to="/riwayat-lapangan"
+                        className="rounded-lg h-8 flex justify-center items-center bg-blue-secondary font-black text-sm text-blue-primary"
+                      >
                         Lihat Riwayat Pesanan Lapangan
                       </Link>
                     </div>
@@ -143,13 +165,13 @@ function Home() {
                 </div>
               </div>
             </>
-          ) : (
+          ) : isLapanganExist === false ? (
             <>
               <div className="h-full flex flex-col overflow-y-hidden relative px-6">
                 {/* header */}
                 {/* <div className="bg-white top-0 pt-4">
-              <img src={gorkusimple} alt="" />
-            </div> */}
+                  <img src={gorkusimple} alt="" />
+                </div> */}
                 <div className="flex bg-white justify-center top-0 pt-4">
                   <img src={GorKu} alt="" />
                 </div>
@@ -158,7 +180,7 @@ function Home() {
                 <div className="flex flex-col flex-grow max-h-screen absolute inset-x-0 bottom-[50px] justify-center items-center space-y-4 z-10">
                   <div className="w-5/6 text-center font-black text-[16px]">
                     Halo,{" "}
-                    <span className="text-blue-primary"> Andre Silalahi! </span>
+                    <span className="text-blue-primary"> {userData.verified}! </span>
                     <br />
                     Selamat bergabung di{" "}
                     <span className="text-blue-primary"> GorKu </span>
@@ -192,6 +214,8 @@ function Home() {
                 </div>
               </div>
             </>
+          ) : (
+            <></>
           )}
         </>
       )}
