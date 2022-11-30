@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d7a4aadd.css",
+    "main.js": "/static/js/main.8e4bb94c.js",
+    "static/media/gor.png": "/static/media/gor.a6d30e0ffad96cd41136.png",
+    "static/media/sport-family-amico.svg": "/static/media/sport-family-amico.37737c0b9c9174482c6478df83411d11.svg",
+    "static/media/Badminton-amico.svg": "/static/media/Badminton-amico.e21bbabc1bb19663c16e1a7ce9637555.svg",
+    "static/media/iconGorku.svg": "/static/media/iconGorku.bda54cf381941c50bc4b532e61a1a492.svg",
+    "static/media/harga.png": "/static/media/harga.101f7a4fec4bbca678ca.png",
+    "static/media/chat.svg": "/static/media/chat.97eebcef2c2df84a6620aced825f044c.svg",
+    "static/media/copy.svg": "/static/media/copy.9339f779287aa34cc5eafb332421a0a7.svg",
+    "static/media/search.svg": "/static/media/search.f38585695477f4c1ae82fa5bc94eb2a1.svg",
+    "index.html": "/index.html",
+    "static/media/location.svg": "/static/media/location.3691fc40104e0f4c28cd0c9d728b1940.svg",
+    "static/media/camera-plus.svg": "/static/media/camera-plus.2ba5055d8cf14f737d56753ae6068320.svg",
+    "static/media/history.svg": "/static/media/history.bda4532c7b00ee833bac7c736a6c0390.svg",
+    "static/media/back.svg": "/static/media/back.e70cec27d29874a49ce604b281945fd3.svg",
+    "static/media/down.svg": "/static/media/down.01c9bd6a82fb15817ec5bf5795fe2954.svg",
+    "static/media/detail.svg": "/static/media/detail.8b5447824a2c5decddecac5658604027.svg",
+    "main.d7a4aadd.css.map": "/static/css/main.d7a4aadd.css.map",
+    "main.8e4bb94c.js.map": "/static/js/main.8e4bb94c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7a4aadd.css",
+    "static/js/main.8e4bb94c.js"
+  ]
+}
