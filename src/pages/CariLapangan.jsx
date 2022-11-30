@@ -10,74 +10,35 @@ import { cookies } from "../helpers/cookies"
 import toast from "react-hot-toast"
 
 const CariLapagan = () => {
-  // const [daftarLapangan, setDaftarLapangan] = useState([
-  //   {
-  //     id: 1,
-  //     namaLapangan: "Gor Bulutangkis Aufa",
-  //     jenisLapangan: "Lapangan Bulutangkis",
-  //     harga: "75.000",
-  //     location: "0.7",
-  //   },
-  //   {
-  //     id: 2,
-  //     namaLapangan: "Lapangan Basket Jatijajar",
-  //     jenisLapangan: "Lapangan Basket",
-  //     harga: "50.000",
-  //     location: "0.7",
-  //   },
-  //   {
-  //     id: 3,
-  //     namaLapangan: "Lapangan Bola GS Sport",
-  //     jenisLapangan: "Lapangan Bola",
-  //     harga: "100.000",
-  //     location: "0.7",
-  //   },
-  //   {
-  //     id: 4,
-  //     namaLapangan: "Gor Kukusan",
-  //     jenisLapangan: "Lapangan Bulutangkis",
-  //     harga: "45.000",
-  //     location: "0.7",
-  //   },
-  //   {
-  //     id: 5,
-  //     namaLapangan: "Gor Kukusan",
-  //     jenisLapangan: "Lapangan Bulutangkis",
-  //     harga: "45.000",
-  //     location: "0.7",
-  //   },
-  //   {
-  //     id: 6,
-  //     namaLapangan: "Gor Kukusan",
-  //     jenisLapangan: "Lapangan Bulutangkis",
-  //     harga: "45.000",
-  //     location: "0.7",
-  //   },
-  //   {
-  //     id: 7,
-  //     namaLapangan: "Gor Kukusan",
-  //     jenisLapangan: "Lapangan Bulutangkis",
-  //     harga: "45.000",
-  //     location: "0.7",
-  //   },
-  // ])
-
   const [daftarLapangan, setDaftarLapangan] = useState(null)
 
   const [isLocation, setIsLocation] = useState(false)
   const [lat, setLat] = useState(123)
   const [lng, setLng] = useState(456)
 
-  const getLocation = () => {
+  const getLocation = async () => {
     if (!navigator.geolocation) {
       toast.error("Geolocation is not supported by your browser")
     } else {
       toast.loading("Locating...")
 
       navigator.geolocation.getCurrentPosition(
-        position => {
+        async position => {
           setLat(position.coords.latitude)
           setLng(position.coords.longitude)
+
+          let data = {
+            lat: position.coords.latitude,
+            long: position.coords.longitude
+          }
+
+          const response = await api.post("/find/location", data, {
+            headers: {
+              Authorization: "Bearer " + cookies.get("token"),
+            },
+          })
+    
+          setDaftarLapangan(response.data.data)
           toast.dismiss()
           toast.success("Your Position Located")
           setIsLocation(true)
@@ -197,7 +158,7 @@ const CariLapagan = () => {
                           <img
                             src={val?.image_url ? val?.image_url : gor}
                             alt=""
-                            className="w-full h-full rounded-lg"
+                            className="w-full h-full rounded-lg object-cover"
                           />
                         </div>
                         <div className="flex flex-col space-y-[0.5px]">

@@ -180,7 +180,7 @@ const LoginOTP = () => {
                 {otp.map((data, index) => {
                   return (
                     <input
-                      className="w-1/4 border-[1px] border-gray-primary rounded-lg px-2  text-center"
+                      className="w-1/4 border-[1px] border-gray-primary rounded-lg px-2 text-center"
                       type="text"
                       maxLength="1"
                       key={index}

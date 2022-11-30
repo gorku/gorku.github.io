@@ -73,7 +73,7 @@ const RiwayatLapangan = () => {
                           <img
                             src={gorData?.image_url ? gorData?.image_url : gor}
                             alt=""
-                            className="w-full h-full rounded-lg"
+                            className="w-full h-full rounded-lg object-cover"
                           />
                         </div>
                         <div className="flex flex-col space-y-[0.5px]">
