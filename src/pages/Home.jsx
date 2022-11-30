@@ -1,6 +1,6 @@
 import React from "react"
 import "../static/css/App.css"
-import { cookies } from "../helpers/cookies"
+// import { cookies } from "../helpers/cookies"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import GorKu from "../static/images/iconGorku.svg"
@@ -13,8 +13,10 @@ import BadmintonAmico from "../static/svg/Badminton-amico.svg"
 import api from "../helpers/api"
 import { useState } from "react"
 import toast from "react-hot-toast"
+import Cookies from "universal-cookie"
 
 function Home() {
+  const cookies = new Cookies()
   const navigate = useNavigate()
   const userData =
     localStorage.getItem("user_data") !== null
