@@ -46,7 +46,7 @@ function Home() {
   }
 
   const onLogout = () => {
-    cookies.remove("token")
+    cookies.remove("token", { path: '/' })
     localStorage.removeItem("user_data")
 
     window.location.reload()
