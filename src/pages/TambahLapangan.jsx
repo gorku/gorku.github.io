@@ -124,6 +124,7 @@ const TambahLapangan = () => {
               backgroundImage:
                 foto == null ? `url(${cameraplus})` : `url(${foto})`,
               backgroundPosition: "center",
+              backgroundSize: foto == null ? "auto" : "cover"
             }}
           >
             <label htmlFor="inputTag" className="hide_file bg-blue-200">
@@ -135,11 +136,6 @@ const TambahLapangan = () => {
                 style={{
                   display: "none",
                 }}
-                // onChange={() => {
-                //   handleFile(
-                //     document.querySelector("input[type=file]").files[0]
-                //   )
-                // }}
               />
             </label>
           </div>

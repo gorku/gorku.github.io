@@ -181,6 +181,7 @@ const LoginOTP = () => {
                   return (
                     <input
                       className="w-1/4 border-[1px] border-gray-primary rounded-lg px-2 text-center"
+                      aria-autocomplete="none"
                       type="text"
                       maxLength="1"
                       key={index}

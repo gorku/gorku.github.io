@@ -43,6 +43,13 @@ function Home() {
     }
   }
 
+  const onLogout = () => {
+    cookies.remove("token")
+    localStorage.removeItem("user_data")
+
+    window.location.reload()
+  }
+
   useEffect(() => {
     const isAuth = cookies.get("token")
 
@@ -67,6 +74,12 @@ function Home() {
         <>
           <div className="h-full flex flex-col overflow-y-hidden relative">
             {/* header */}
+            <div
+              className="absolute top-[20px] right-[20px] text-red-500 font-bold"
+              onClick={onLogout}
+            >
+              Logout
+            </div>
             <div className="flex bg-white justify-center top-0 pt-4">
               <img src={GorKu} alt="" />
             </div>
@@ -116,6 +129,12 @@ function Home() {
             <>
               <div className="h-full flex flex-col overflow-y-hidden relative">
                 {/* header */}
+                <div
+                  className="absolute top-[20px] right-[20px] text-red-500 font-bold"
+                  onClick={onLogout}
+                >
+                  Logout
+                </div>
                 <div className="flex bg-white justify-center top-0 pt-4">
                   <img src={GorKu} alt="" />
                 </div>
@@ -130,20 +149,24 @@ function Home() {
                       <img src={BadmintonAmico} className="h-36" alt="" />
                     </div>
                     <div className="">
-                      <h1 className="text-base font-semibold">{lapanganData?.name}</h1>
+                      <h1 className="text-base font-semibold">
+                        {lapanganData?.name}
+                      </h1>
                       <p>Lapangan {lapanganData?.type}</p>
                     </div>
 
                     <div>
                       <h1 className="text-[10px]">
                         {" "}
-                        <span className="font-semibold">Alamat: </span> {lapanganData?.address}
+                        <span className="font-semibold">Alamat: </span>{" "}
+                        {lapanganData?.address}
                       </h1>
 
                       <h1 className="text-[10px]">
                         {" "}
-                        <span className="font-semibold">Harga sewa: </span> Rp.{" "}
-                        {lapanganData?.rent_fee}/jam
+                        <span className="font-semibold">
+                          Harga sewa:{" "}
+                        </span> Rp. {lapanganData?.rent_fee}/jam
                       </h1>
 
                       <h1 className="text-[10px]">
@@ -172,6 +195,12 @@ function Home() {
                 {/* <div className="bg-white top-0 pt-4">
                   <img src={gorkusimple} alt="" />
                 </div> */}
+                <div
+                  className="absolute top-[20px] right-[20px] text-red-500 font-bold"
+                  onClick={onLogout}
+                >
+                  Logout
+                </div>
                 <div className="flex bg-white justify-center top-0 pt-4">
                   <img src={GorKu} alt="" />
                 </div>
@@ -180,7 +209,10 @@ function Home() {
                 <div className="flex flex-col flex-grow max-h-screen absolute inset-x-0 bottom-[50px] justify-center items-center space-y-4 z-10">
                   <div className="w-5/6 text-center font-black text-[16px]">
                     Halo,{" "}
-                    <span className="text-blue-primary"> {userData.verified}! </span>
+                    <span className="text-blue-primary">
+                      {" "}
+                      {userData.verified}!{" "}
+                    </span>
                     <br />
                     Selamat bergabung di{" "}
                     <span className="text-blue-primary"> GorKu </span>
