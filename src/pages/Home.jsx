@@ -46,7 +46,7 @@ function Home() {
   }
 
   const onLogout = () => {
-    cookies.remove("token", { path: '/' })
+    cookies.remove("token", { path: "/", domain: ".gorku.github.io" })
     localStorage.removeItem("user_data")
 
     window.location.reload()
